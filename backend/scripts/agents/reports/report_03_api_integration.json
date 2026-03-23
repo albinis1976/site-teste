@@ -1,0 +1,175 @@
+{
+  "agent": "API Integration",
+  "timestamp": "2026-03-22T15:09:51.791684",
+  "base_url": "http://127.0.0.1:8001",
+  "sections": {
+    "server_health": {
+      "welcome_endpoint": {
+        "url": "http://127.0.0.1:8001/",
+        "method": "GET",
+        "status_code": 200,
+        "response_preview": "{\"status\": \"online\", \"message\": \"Welcome to the English Course Platform API\"}",
+        "expected_status": 200,
+        "passed": true
+      },
+      "server_reachable": true,
+      "status": "OK"
+    },
+    "public_endpoints": {
+      "tests": [
+        {
+          "url": "http://127.0.0.1:8001/api/courses/",
+          "method": "GET",
+          "status_code": 200,
+          "response_preview": "[{\"id\":25,\"title\":\"Secret Course\",\"slug\":\"secret-course\",\"description\":\"\",\"thumbnail\":null,\"level\":\"Todos os n\u00edveis\",\"price\":\"50.00\",\"is_free\":false,\"is_published\":true,\"teacher\":{\"id\":37,\"email\":\"sec_teacher@test.com\",\"first_name\":\"\",\"last_name\":\"\"},\"modules\":[],\"lessons\":[{\"id\":21,\"course\":25,\"mod",
+          "expected_status": 200,
+          "passed": true
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/courses/25/",
+          "method": "GET",
+          "status_code": 200,
+          "response_preview": "{\"id\":25,\"title\":\"Secret Course\",\"slug\":\"secret-course\",\"description\":\"\",\"thumbnail\":null,\"level\":\"Todos os n\u00edveis\",\"price\":\"50.00\",\"is_free\":false,\"is_published\":true,\"teacher\":{\"id\":37,\"email\":\"sec_teacher@test.com\",\"first_name\":\"\",\"last_name\":\"\"},\"modules\":[],\"lessons\":[{\"id\":21,\"course\":25,\"modu",
+          "expected_status": 200,
+          "passed": true
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/courses/secret-course/",
+          "method": "GET",
+          "status_code": 200,
+          "response_preview": "{\"id\":25,\"title\":\"Secret Course\",\"slug\":\"secret-course\",\"description\":\"\",\"thumbnail\":null,\"level\":\"Todos os n\u00edveis\",\"price\":\"50.00\",\"is_free\":false,\"is_published\":true,\"teacher\":{\"id\":37,\"email\":\"sec_teacher@test.com\",\"first_name\":\"\",\"last_name\":\"\"},\"modules\":[],\"lessons\":[{\"id\":21,\"course\":25,\"modu",
+          "expected_status": 200,
+          "passed": true
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "auth_endpoints": {
+      "tests": [
+        {
+          "url": "http://127.0.0.1:8001/api/accounts/register/",
+          "method": "POST",
+          "status_code": 201,
+          "response_preview": "{\"email\":\"agent03_150951@test.com\"}",
+          "note": "201=new user, 400=already exists \u2014 both are valid probe results"
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/accounts/login/",
+          "method": "POST",
+          "status_code": 200,
+          "response_preview": "{\"refresh\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3NDgwNzc5MiwiaWF0IjoxNzc0MjAyOTkyLCJqdGkiOiI2NjFmODQ2YjA0NTg0MWQzOTE0MGM1ZTVhOGEyMjI3YyIsInVzZXJfaWQiOiI0MiJ9.YU9kgQ3KHdFQVxctvnCT1mk5N09btCGcOuMh7DhtLUE\",\"access\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2",
+          "expected_status": 200,
+          "passed": true
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/accounts/login/",
+          "method": "POST",
+          "status_code": 401,
+          "response_preview": "{\"detail\":\"No active account found with the given credentials\"}",
+          "expected_status": 401,
+          "passed": true
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/accounts/me/",
+          "method": "GET",
+          "status_code": 200,
+          "response_preview": "{\"id\":42,\"email\":\"api_agent_test@test.com\",\"first_name\":\"\",\"last_name\":\"\",\"role\":\"student\"}",
+          "expected_status": 200,
+          "passed": true
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/accounts/me/",
+          "method": "GET",
+          "status_code": 401,
+          "response_preview": "{\"detail\":\"Authentication credentials were not provided.\"}",
+          "expected_status": 401,
+          "passed": true
+        }
+      ],
+      "status": "FAIL"
+    },
+    "authenticated_course_endpoints": {
+      "tests": [
+        {
+          "url": "http://127.0.0.1:8001/api/courses/enrollments/",
+          "method": "GET",
+          "status_code": 200,
+          "response_preview": "[]",
+          "expected_status": 200,
+          "passed": true
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/courses/25/access/",
+          "method": "GET",
+          "status_code": 200,
+          "response_preview": "{\"has_access\":false}",
+          "expected_status": 200,
+          "passed": true
+        }
+      ],
+      "status": "OK"
+    },
+    "auth_enforcement": {
+      "tests": [
+        {
+          "url": "http://127.0.0.1:8001/api/courses/enrollments/",
+          "method": "GET",
+          "status_code": 401,
+          "response_preview": "{\"detail\":\"Authentication credentials were not provided.\"}",
+          "expected_status": 401,
+          "passed": true
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/courses/1/enroll/",
+          "method": "POST",
+          "status_code": 401,
+          "response_preview": "{\"detail\":\"Authentication credentials were not provided.\"}",
+          "expected_status": 401,
+          "passed": true
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/payments/create-checkout-session/1/",
+          "method": "POST",
+          "status_code": 401,
+          "response_preview": "{\"detail\":\"Authentication credentials were not provided.\"}",
+          "expected_status": 401,
+          "passed": true
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "extended_endpoints": {
+      "tests": [
+        {
+          "url": "http://127.0.0.1:8001/api/courses/lessons/21/",
+          "method": "GET",
+          "status_code": 403,
+          "response_preview": "{\"detail\":\"Voc\u00ea precisa de uma matr\u00edcula ativa para acessar este conte\u00fado pago.\"}",
+          "expected_status": 200,
+          "passed": false
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/courses/25/enroll/",
+          "method": "POST",
+          "status_code": 201,
+          "response_preview": "{\"detail\":\"Matr\u00edcula realizada com sucesso.\"}",
+          "note": "201=success, 400=already enrolled \u2014 both valid"
+        },
+        {
+          "url": "http://127.0.0.1:8001/api/payments/create-checkout-session/25/",
+          "method": "POST",
+          "status_code": 502,
+          "response_preview": "{\"detail\":\"Invalid API Key provided: sk_test_***********_key\"}",
+          "expected_status": 200,
+          "passed": false
+        }
+      ],
+      "status": "FAIL"
+    }
+  },
+  "overall_status": "FAIL"
+}

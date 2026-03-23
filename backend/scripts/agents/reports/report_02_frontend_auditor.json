@@ -1,0 +1,187 @@
+{
+  "agent": "Frontend Auditor",
+  "timestamp": "2026-03-22T15:00:48.793652",
+  "sections": {
+    "key_file_existence": {
+      "checks": {
+        "App.jsx": {
+          "exists": true,
+          "size_bytes": 5935
+        },
+        "main.jsx": {
+          "exists": true,
+          "size_bytes": 458
+        },
+        "Login.jsx": {
+          "exists": true,
+          "size_bytes": 3672
+        },
+        "Register.jsx": {
+          "exists": true,
+          "size_bytes": 6776
+        },
+        "Courses.jsx": {
+          "exists": true,
+          "size_bytes": 5527
+        },
+        "CoursePlayer.jsx": {
+          "exists": true,
+          "size_bytes": 8506
+        },
+        "Plans.jsx": {
+          "exists": true,
+          "size_bytes": 8697
+        },
+        "ForgotPassword.jsx": {
+          "exists": true,
+          "size_bytes": 2879
+        },
+        "ResetPassword.jsx": {
+          "exists": true,
+          "size_bytes": 3651
+        },
+        "api.js": {
+          "exists": true,
+          "size_bytes": 3369
+        },
+        "authService.js": {
+          "exists": true,
+          "size_bytes": 462
+        },
+        "courseService.js": {
+          "exists": true,
+          "size_bytes": 854
+        },
+        "userService.js": {
+          "exists": true,
+          "size_bytes": 219
+        }
+      },
+      "missing_files": [],
+      "status": "OK"
+    },
+    "api_configuration": {
+      "base_url": "NOT FOUND",
+      "has_interceptor": true,
+      "has_auth_header": true,
+      "status": "WARN"
+    },
+    "auth_context": {
+      "context_files": [
+        "AuthContext.jsx"
+      ],
+      "has_protected_route": false,
+      "uses_react_router": true,
+      "routes_count": 27,
+      "status": "OK"
+    },
+    "page_analysis": {
+      "pages": {
+        "Blog.jsx": {
+          "size_bytes": 6575,
+          "uses_api": false,
+          "uses_auth_token": false,
+          "has_error_handling": false,
+          "has_loading_state": false
+        },
+        "Contact.jsx": {
+          "size_bytes": 5353,
+          "uses_api": true,
+          "uses_auth_token": false,
+          "has_error_handling": false,
+          "has_loading_state": false
+        },
+        "CoursePlayer.jsx": {
+          "size_bytes": 8506,
+          "uses_api": false,
+          "uses_auth_token": false,
+          "has_error_handling": true,
+          "has_loading_state": false
+        },
+        "Courses.jsx": {
+          "size_bytes": 5527,
+          "uses_api": false,
+          "uses_auth_token": true,
+          "has_error_handling": true,
+          "has_loading_state": true
+        },
+        "ForgotPassword.jsx": {
+          "size_bytes": 2879,
+          "uses_api": false,
+          "uses_auth_token": false,
+          "has_error_handling": true,
+          "has_loading_state": true
+        },
+        "Home.jsx": {
+          "size_bytes": 13917,
+          "uses_api": false,
+          "uses_auth_token": false,
+          "has_error_handling": false,
+          "has_loading_state": false
+        },
+        "Login.jsx": {
+          "size_bytes": 3672,
+          "uses_api": false,
+          "uses_auth_token": true,
+          "has_error_handling": true,
+          "has_loading_state": false
+        },
+        "Plans.jsx": {
+          "size_bytes": 8697,
+          "uses_api": false,
+          "uses_auth_token": false,
+          "has_error_handling": false,
+          "has_loading_state": false
+        },
+        "Register.jsx": {
+          "size_bytes": 6776,
+          "uses_api": false,
+          "uses_auth_token": false,
+          "has_error_handling": true,
+          "has_loading_state": false
+        },
+        "ResetPassword.jsx": {
+          "size_bytes": 3651,
+          "uses_api": false,
+          "uses_auth_token": false,
+          "has_error_handling": true,
+          "has_loading_state": true
+        },
+        "Teachers.jsx": {
+          "size_bytes": 5220,
+          "uses_api": false,
+          "uses_auth_token": false,
+          "has_error_handling": false,
+          "has_loading_state": false
+        },
+        "Terms.jsx": {
+          "size_bytes": 1838,
+          "uses_api": false,
+          "uses_auth_token": false,
+          "has_error_handling": false,
+          "has_loading_state": false
+        },
+        "Testimonials.jsx": {
+          "size_bytes": 4967,
+          "uses_api": true,
+          "uses_auth_token": false,
+          "has_error_handling": false,
+          "has_loading_state": false
+        }
+      },
+      "total_pages": 13
+    },
+    "environment": {
+      "env_file_exists": true,
+      "has_vite_api_url": true,
+      "has_vite_stripe_key": false
+    },
+    "payment_integration": {
+      "has_checkout_call": false,
+      "has_redirect": false,
+      "handles_errors": false,
+      "status": "WARN"
+    }
+  },
+  "overall_status": "WARN"
+}

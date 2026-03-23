@@ -1,0 +1,306 @@
+{
+  "agent": "Access Control",
+  "timestamp": "2026-03-22T15:13:34.492725",
+  "sections": {
+    "data_snapshot": {
+      "free_courses": 2,
+      "paid_courses": 5,
+      "free_lessons": 2,
+      "preview_lessons": 0,
+      "paid_lessons": 5,
+      "students_available": 3,
+      "teachers_available": 2,
+      "admins_available": 1,
+      "superusers_available": 1
+    },
+    "anonymous_access": {
+      "tests": [
+        {
+          "course": "Secret Course",
+          "course_is_free": false,
+          "lesson": "Secret Lesson",
+          "lesson_is_free": false,
+          "has_access": false,
+          "expected": false,
+          "passed": true
+        },
+        {
+          "course": "Ingl\u00eas Avan\u00e7ado Real",
+          "course_is_free": false,
+          "lesson": "Aula 1: Introdu\u00e7\u00e3o",
+          "lesson_is_free": false,
+          "has_access": false,
+          "expected": false,
+          "passed": true
+        },
+        {
+          "course": "Sim Paid",
+          "course_is_free": false,
+          "lesson": "Paid Lesson",
+          "lesson_is_free": false,
+          "has_access": false,
+          "expected": false,
+          "passed": true
+        },
+        {
+          "course": "Sim Free",
+          "course_is_free": true,
+          "lesson": "Free Lesson",
+          "lesson_is_free": false,
+          "has_access": true,
+          "expected": true,
+          "passed": true
+        }
+      ],
+      "passed": 4,
+      "failed": 0,
+      "status": "OK"
+    },
+    "free_and_preview_lesson_access": {
+      "tests": [
+        {
+          "lesson_id": 11,
+          "lesson_title": "Aula Gratis",
+          "is_free": true,
+          "is_preview": false,
+          "user": "test_student@test.com",
+          "role": "student",
+          "has_access": true,
+          "passed": true
+        },
+        {
+          "lesson_id": 11,
+          "lesson_title": "Aula Gratis",
+          "is_free": true,
+          "is_preview": false,
+          "user": "teacher@test.com",
+          "role": "teacher",
+          "has_access": true,
+          "passed": true
+        },
+        {
+          "lesson_id": 11,
+          "lesson_title": "Aula Gratis",
+          "is_free": true,
+          "is_preview": false,
+          "user": "",
+          "role": "admin",
+          "has_access": true,
+          "passed": true
+        },
+        {
+          "lesson_id": 9,
+          "lesson_title": "Aula Gr\u00e1tis",
+          "is_free": true,
+          "is_preview": false,
+          "user": "test_student@test.com",
+          "role": "student",
+          "has_access": true,
+          "passed": true
+        },
+        {
+          "lesson_id": 9,
+          "lesson_title": "Aula Gr\u00e1tis",
+          "is_free": true,
+          "is_preview": false,
+          "user": "teacher@test.com",
+          "role": "teacher",
+          "has_access": true,
+          "passed": true
+        },
+        {
+          "lesson_id": 9,
+          "lesson_title": "Aula Gr\u00e1tis",
+          "is_free": true,
+          "is_preview": false,
+          "user": "",
+          "role": "admin",
+          "has_access": true,
+          "passed": true
+        }
+      ],
+      "passed": 6,
+      "failed": 0,
+      "status": "OK"
+    },
+    "paid_lesson_blocking": {
+      "tests": [
+        {
+          "lesson_id": 12,
+          "lesson_title": "Aula Paga",
+          "course_is_free": false,
+          "lesson_is_free": false,
+          "user": "test_student@test.com",
+          "has_active_enrollment": false,
+          "has_access": false,
+          "passed": true
+        },
+        {
+          "lesson_id": 12,
+          "lesson_title": "Aula Paga",
+          "course_is_free": false,
+          "lesson_is_free": false,
+          "user": "test_reg_ok@example.com",
+          "has_active_enrollment": false,
+          "has_access": false,
+          "passed": true
+        },
+        {
+          "lesson_id": 19,
+          "lesson_title": "Paid Lesson",
+          "course_is_free": false,
+          "lesson_is_free": false,
+          "user": "test_student@test.com",
+          "has_active_enrollment": false,
+          "has_access": false,
+          "passed": true
+        },
+        {
+          "lesson_id": 19,
+          "lesson_title": "Paid Lesson",
+          "course_is_free": false,
+          "lesson_is_free": false,
+          "user": "test_reg_ok@example.com",
+          "has_active_enrollment": false,
+          "has_access": false,
+          "passed": true
+        },
+        {
+          "lesson_id": 20,
+          "lesson_title": "Aula 1: Introdu\u00e7\u00e3o",
+          "course_is_free": false,
+          "lesson_is_free": false,
+          "user": "test_student@test.com",
+          "has_active_enrollment": false,
+          "has_access": false,
+          "passed": true
+        },
+        {
+          "lesson_id": 20,
+          "lesson_title": "Aula 1: Introdu\u00e7\u00e3o",
+          "course_is_free": false,
+          "lesson_is_free": false,
+          "user": "test_reg_ok@example.com",
+          "has_active_enrollment": false,
+          "has_access": false,
+          "passed": true
+        },
+        {
+          "lesson_id": 21,
+          "lesson_title": "Secret Lesson",
+          "course_is_free": false,
+          "lesson_is_free": false,
+          "user": "test_student@test.com",
+          "has_active_enrollment": false,
+          "has_access": false,
+          "passed": true
+        },
+        {
+          "lesson_id": 21,
+          "lesson_title": "Secret Lesson",
+          "course_is_free": false,
+          "lesson_is_free": false,
+          "user": "test_reg_ok@example.com",
+          "has_active_enrollment": false,
+          "has_access": false,
+          "passed": true
+        }
+      ],
+      "passed": 8,
+      "failed": 0,
+      "status": "OK"
+    },
+    "enrolled_student_access": {
+      "tests": [
+        {
+          "enrollment_id": 5,
+          "user": "test_student@test.com",
+          "course": "Curso de Teste",
+          "lesson_id": 10,
+          "lesson_title": "Aula Paga",
+          "has_access": true,
+          "passed": true
+        },
+        {
+          "enrollment_id": 11,
+          "user": "",
+          "course": "Sim Paid",
+          "lesson_id": 19,
+          "lesson_title": "Paid Lesson",
+          "has_access": true,
+          "passed": true
+        },
+        {
+          "enrollment_id": 12,
+          "user": "novo_aluno@teste.com",
+          "course": "Ingl\u00eas Avan\u00e7ado Real",
+          "lesson_id": 20,
+          "lesson_title": "Aula 1: Introdu\u00e7\u00e3o",
+          "has_access": true,
+          "passed": true
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "role_based_access": {
+      "tests": [
+        {
+          "role": "superuser",
+          "user": "admin@test.com",
+          "course": "Secret Course",
+          "course_access": true,
+          "lesson_access": true,
+          "expected": true,
+          "passed": true
+        },
+        {
+          "role": "admin",
+          "user": "",
+          "course_access": true,
+          "lesson_access": true,
+          "expected": true,
+          "passed": true
+        },
+        {
+          "role": "teacher",
+          "user": "teacher@test.com",
+          "owns_course": false,
+          "course_access": false,
+          "lesson_access": false,
+          "expected": false,
+          "passed": true
+        },
+        {
+          "role": "teacher",
+          "user": "test_teacher@test.com",
+          "owns_course": false,
+          "course_access": false,
+          "lesson_access": false,
+          "expected": false,
+          "passed": true
+        }
+      ],
+      "passed": 4,
+      "failed": 0,
+      "status": "OK"
+    },
+    "inactive_enrollment_blocking": {
+      "tests": [
+        {
+          "enrollment_id": 21,
+          "user": "api_agent_test@test.com",
+          "course": "Secret Course",
+          "lesson_id": 21,
+          "has_access": false,
+          "passed": true
+        }
+      ],
+      "passed": 1,
+      "failed": 0,
+      "status": "OK"
+    }
+  },
+  "overall_status": "PASS"
+}

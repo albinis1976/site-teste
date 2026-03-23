@@ -1,0 +1,138 @@
+
+/* Pages Common */
+section {
+    padding: 100px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: clamp(32px, 5vw, 42px);
+    margin-bottom: 16px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--grad-accent);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 18px;
+    max-width: 650px;
+    margin: 20px auto 0;
+}
+
+/* Hero Variant for Pages */
+.hero-page {
+    padding: 120px 0 80px;
+    background: var(--grad-primary);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-page::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -10%; width: 60%; height: 200%;
+    background: radial-gradient(circle, rgba(247,127,0,0.1) 0%, transparent 70%);
+}
+
+.hero-page h1 {
+    color: white;
+    font-size: clamp(36px, 8vw, 56px);
+    margin-bottom: 24px;
+}
+
+.hero-page p {
+    font-size: 20px;
+    color: rgba(255,255,255,0.8);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Auth Pages */
+.auth-page {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f4f8;
+    padding: 40px 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    padding: 50px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 20px 50px rgba(13, 33, 63, 0.1);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.auth-header h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.auth-footer a {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 30px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.stat-val {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--accent-color);
+    display: block;
+}
+
+.stat-lbl {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 8px;
+}

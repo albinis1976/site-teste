@@ -1,0 +1,258 @@
+{
+  "agent": "Security & Integrity",
+  "timestamp": "2026-03-22T15:31:07.824442",
+  "sections": {
+    "django_configuration": {
+      "checks": [
+        {
+          "check": "DEBUG is False in production",
+          "passed": false,
+          "severity": "CRITICAL",
+          "note": "DEV_EXPECTED \u2014 Set DEBUG=False for production deployment"
+        },
+        {
+          "check": "SECRET_KEY is not the insecure default",
+          "passed": false,
+          "severity": "CRITICAL"
+        },
+        {
+          "check": "ALLOWED_HOSTS is not wildcard",
+          "passed": true,
+          "severity": "OK"
+        },
+        {
+          "check": "CORS origins are not wildcard",
+          "passed": true,
+          "severity": "OK"
+        },
+        {
+          "check": "CSRF_COOKIE_SECURE is True",
+          "passed": false,
+          "severity": "MEDIUM",
+          "note": "DEV_EXPECTED \u2014 These should be True on HTTPS/production"
+        },
+        {
+          "check": "SESSION_COOKIE_SECURE is True",
+          "passed": false,
+          "severity": "MEDIUM",
+          "note": "DEV_EXPECTED \u2014 These should be True on HTTPS/production"
+        },
+        {
+          "check": "SECURE_SSL_REDIRECT is True",
+          "passed": false,
+          "severity": "MEDIUM",
+          "note": "DEV_EXPECTED \u2014 These should be True on HTTPS/production"
+        },
+        {
+          "check": "SECURE_HSTS_SECONDS > 0",
+          "passed": false,
+          "severity": "LOW",
+          "note": "DEV_EXPECTED \u2014 These should be True on HTTPS/production"
+        },
+        {
+          "check": "X_FRAME_OPTIONS is set",
+          "passed": true,
+          "severity": "OK"
+        }
+      ],
+      "critical_failures": 2,
+      "status": "CRITICAL"
+    },
+    "stripe_key_configuration": {
+      "checks": [
+        {
+          "check": "Stripe secret key is configured",
+          "passed": false,
+          "severity": "CRITICAL"
+        },
+        {
+          "check": "Stripe key is test key (not live) in dev",
+          "passed": true,
+          "severity": "OK"
+        },
+        {
+          "check": "Stripe webhook secret is configured",
+          "passed": false,
+          "severity": "HIGH"
+        },
+        {
+          "check": "Live key not used in DEBUG mode",
+          "passed": true,
+          "severity": "OK"
+        }
+      ],
+      "unconfigured_keys": 2,
+      "status": "WARN",
+      "note": "Configure real keys in .env before going to production"
+    },
+    "webhook_signature_validation": {
+      "checks": [
+        {
+          "check": "Webhook validates Stripe signature",
+          "passed": true,
+          "severity": "OK"
+        },
+        {
+          "check": "Webhook checks raw payload (not parsed)",
+          "passed": true,
+          "severity": "OK"
+        },
+        {
+          "check": "Webhook checks sig_header presence",
+          "passed": true,
+          "severity": "OK"
+        },
+        {
+          "check": "Webhook endpoint is AllowAny (required by Stripe)",
+          "passed": true,
+          "severity": "OK"
+        },
+        {
+          "check": "Webhook handles invalid payload gracefully",
+          "passed": true,
+          "severity": "OK"
+        }
+      ],
+      "status": "OK"
+    },
+    "endpoint_permission_audit": {
+      "checks": {
+        "courses/views.py": {
+          "CourseListView": {
+            "view_found": true,
+            "expected_permission": "AllowAny",
+            "permission_class_present": true,
+            "passed": true
+          },
+          "EnrollView": {
+            "view_found": true,
+            "expected_permission": "IsAuthenticated",
+            "permission_class_present": true,
+            "passed": true
+          },
+          "MyEnrollmentsView": {
+            "view_found": true,
+            "expected_permission": "IsAuthenticated",
+            "permission_class_present": true,
+            "passed": true
+          },
+          "LessonDetailView": {
+            "view_found": true,
+            "expected_permission": "IsAuthenticated",
+            "permission_class_present": true,
+            "passed": true
+          },
+          "CourseAccessView": {
+            "view_found": true,
+            "expected_permission": "IsAuthenticated",
+            "permission_class_present": true,
+            "passed": true
+          },
+          "CourseCreateView": {
+            "view_found": true,
+            "expected_permission": "IsTeacherOrAdmin",
+            "permission_class_present": true,
+            "passed": true
+          },
+          "TeacherCourseListView": {
+            "view_found": true,
+            "expected_permission": "IsTeacherOrAdmin",
+            "permission_class_present": true,
+            "passed": true
+          }
+        },
+        "accounts/views.py": {
+          "RegisterView": {
+            "view_found": true,
+            "expected_permission": "AllowAny",
+            "permission_class_present": true,
+            "passed": true
+          },
+          "ProfileView": {
+            "view_found": true,
+            "expected_permission": "IsAuthenticated",
+            "permission_class_present": true,
+            "passed": true
+          },
+          "TeacherCreateView": {
+            "view_found": true,
+            "expected_permission": "IsAdminUser",
+            "permission_class_present": true,
+            "passed": true
+          }
+        },
+        "payments/views.py": {
+          "CreateCheckoutSessionView": {
+            "view_found": true,
+            "expected_permission": "IsAuthenticated",
+            "permission_class_present": true,
+            "passed": true
+          },
+          "StripeWebhookView": {
+            "view_found": true,
+            "expected_permission": "AllowAny",
+            "permission_class_present": true,
+            "passed": true
+          }
+        }
+      },
+      "failed_checks": 0,
+      "status": "OK"
+    },
+    "privileged_account_audit": {
+      "superuser_count": 3,
+      "staff_count": 2,
+      "superusers": [
+        "admin@test.com",
+        "",
+        ""
+      ],
+      "staff_users": [
+        "admin@test.com",
+        ""
+      ],
+      "weak_usernames": [
+        "admin"
+      ],
+      "status": "WARN"
+    },
+    "raw_query_inspection": {
+      "files_with_raw_queries": {},
+      "status": "OK",
+      "note": "Raw queries are not always dangerous but should be reviewed"
+    },
+    "password_reset_security": {
+      "checks": [
+        {
+          "check": "Uses Django default_token_generator",
+          "passed": true,
+          "severity": "OK"
+        },
+        {
+          "check": "Uses UID base64 encoding",
+          "passed": true,
+          "severity": "OK"
+        },
+        {
+          "check": "Token validation on confirm",
+          "passed": true,
+          "severity": "OK"
+        },
+        {
+          "check": "Does not reveal if email exists",
+          "passed": true,
+          "severity": "OK"
+        }
+      ],
+      "status": "OK"
+    },
+    "security_log_analysis": {
+      "log_size_bytes": 116931,
+      "critical_keywords_found": {},
+      "suspicious_events": 0,
+      "status": "OK"
+    }
+  },
+  "overall_status": "CRITICAL",
+  "dev_mode_note": "Running in DEBUG=True. Many security flags (SSL, HTTPS cookies) are expected to be False in local development. Review CRITICAL items carefully."
+}

@@ -1,0 +1,64 @@
+{
+  "agent": "Payment Simulation",
+  "timestamp": "2026-03-22T15:16:00.809417",
+  "sections": {
+    "simulation_setup": {
+      "student": "agent05_student@simulation.test",
+      "paid_course": "Secret Course",
+      "free_course": "Sim Free",
+      "status": "OK"
+    },
+    "free_course_payment_guard": {
+      "course": "Sim Free",
+      "is_free": true,
+      "payment_should_be_blocked": true,
+      "guard_active": true,
+      "passed": true,
+      "status": "OK"
+    },
+    "duplicate_enrollment_guard": {
+      "user": "agent05_student@simulation.test",
+      "course": "Secret Course",
+      "already_enrolled": true,
+      "checkout_would_be_blocked": true,
+      "passed": true,
+      "status": "OK"
+    },
+    "full_payment_flow_simulation": {
+      "session_url": "https://checkout.stripe.com/pay/sim_123",
+      "metadata_user_id": "39",
+      "metadata_course_id": "25",
+      "metadata_correct": true,
+      "access_before_webhook": false,
+      "access_after_webhook": true,
+      "passed": true,
+      "status": "OK"
+    },
+    "webhook_idempotency": {
+      "enrollments_before_second_webhook": 1,
+      "enrollments_after_second_webhook": 1,
+      "no_duplicate_created": true,
+      "passed": true,
+      "status": "OK"
+    },
+    "post_payment_access_verification": {
+      "enrollment_exists": true,
+      "is_active": true,
+      "passed": true,
+      "status": "OK"
+    },
+    "stripe_metadata_integrity": {
+      "has_course_id_in_metadata": true,
+      "has_user_id_in_metadata": true,
+      "has_client_reference_id": true,
+      "webhook_uses_metadata": true,
+      "status": "OK"
+    },
+    "cleanup": {
+      "enrollments_removed": 1,
+      "payments_removed": 0,
+      "status": "OK"
+    }
+  },
+  "overall_status": "PASS"
+}

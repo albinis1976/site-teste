@@ -1,0 +1,79 @@
+{
+  "master_runner": "All Agents",
+  "timestamp": "2026-03-22T14:55:05.292037",
+  "overall_status": "CRITICAL",
+  "agents": [
+    {
+      "agent_id": "01",
+      "agent_name": "Backend Auditor",
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_seconds": 0.55,
+      "report_file": "report_01_backend_auditor.json",
+      "error": null
+    },
+    {
+      "agent_id": "02",
+      "agent_name": "Frontend Auditor",
+      "status": "WARN",
+      "exit_code": 0,
+      "elapsed_seconds": 0.07,
+      "report_file": "report_02_frontend_auditor.json",
+      "error": null
+    },
+    {
+      "agent_id": "03",
+      "agent_name": "API Integration",
+      "status": "FAIL",
+      "exit_code": 0,
+      "elapsed_seconds": 0.89,
+      "report_file": "report_03_api_integration.json",
+      "error": null
+    },
+    {
+      "agent_id": "04",
+      "agent_name": "Access Control",
+      "status": "CRITICAL",
+      "exit_code": 0,
+      "elapsed_seconds": 0.52,
+      "report_file": "report_04_access_control.json",
+      "error": null
+    },
+    {
+      "agent_id": "05",
+      "agent_name": "Payment Simulation",
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_seconds": 0.54,
+      "report_file": "report_05_payment_simulation.json",
+      "error": null
+    },
+    {
+      "agent_id": "06",
+      "agent_name": "End-to-End Testing",
+      "status": "FAIL",
+      "exit_code": 0,
+      "elapsed_seconds": 0.71,
+      "report_file": "report_06_e2e_testing.json",
+      "error": null
+    },
+    {
+      "agent_id": "07",
+      "agent_name": "Security & Integrity",
+      "status": "CRITICAL",
+      "exit_code": 0,
+      "elapsed_seconds": 0.48,
+      "report_file": "report_07_security_integrity.json",
+      "error": null
+    }
+  ],
+  "summary": {
+    "pass": 2,
+    "warn": 1,
+    "fail": 2,
+    "critical": 2,
+    "error": 0,
+    "timeout": 0,
+    "skip": 0
+  }
+}

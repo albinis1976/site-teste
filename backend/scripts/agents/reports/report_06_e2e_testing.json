@@ -1,0 +1,102 @@
+{
+  "agent": "End-to-End Testing",
+  "timestamp": "2026-03-22T15:30:02.283829",
+  "flow_steps": [
+    {
+      "step": "1. Register new user",
+      "passed": true,
+      "details": {
+        "status_code": 201,
+        "email": "e2e_c23e5e42@test.simulation"
+      }
+    },
+    {
+      "step": "2. Login and obtain JWT token",
+      "passed": true,
+      "details": {
+        "status_code": 200,
+        "token_obtained": true
+      }
+    },
+    {
+      "step": "3. List all published courses",
+      "passed": true,
+      "details": {
+        "status_code": 200,
+        "course_count": 7
+      }
+    },
+    {
+      "step": "4. Verify access DENIED before enrollment",
+      "passed": true,
+      "details": {
+        "course": "Secret Course",
+        "has_access": false,
+        "expected": false,
+        "status_code": 200
+      }
+    },
+    {
+      "step": "5. My enrollments (empty before payment)",
+      "passed": true,
+      "details": {
+        "enrollment_count": 0,
+        "expected": 0
+      }
+    },
+    {
+      "step": "6. Simulate webhook \u2192 enrollment activated",
+      "passed": true,
+      "details": {
+        "enrollment_id": 27,
+        "is_active": true,
+        "was_newly_created": true
+      }
+    },
+    {
+      "step": "7. Verify access GRANTED after enrollment",
+      "passed": true,
+      "details": {
+        "course": "Secret Course",
+        "has_access": true,
+        "expected": true
+      }
+    },
+    {
+      "step": "8. Access paid lesson (enrolled user)",
+      "passed": true,
+      "details": {
+        "lesson_id": 21,
+        "status_code": 200
+      }
+    },
+    {
+      "step": "9. My enrollments shows active enrollment",
+      "passed": true,
+      "details": {
+        "count": 1,
+        "has_active": true
+      }
+    }
+  ],
+  "sections": {
+    "setup": {
+      "paid_course": "Secret Course",
+      "paid_lesson": 21,
+      "sim_email": "e2e_c23e5e42@test.simulation",
+      "server_reachable": true
+    },
+    "cleanup": {
+      "user_deleted": true,
+      "status": "OK"
+    }
+  },
+  "summary": {
+    "total_steps": 9,
+    "executed": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0
+  },
+  "overall_status": "PASS"
+}

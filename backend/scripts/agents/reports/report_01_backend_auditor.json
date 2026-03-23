@@ -1,0 +1,70 @@
+{
+  "agent": "Backend Auditor",
+  "timestamp": "2026-03-22T14:57:38.675449",
+  "sections": {
+    "migrations": {
+      "status": "OK",
+      "applied_count": 27,
+      "pending_count": 0,
+      "pending_migrations": []
+    },
+    "record_counts": {
+      "users": 24,
+      "profiles": 24,
+      "courses": 13,
+      "modules": 0,
+      "lessons": 8,
+      "enrollments": 4,
+      "payments": 0
+    },
+    "orphan_checks": {
+      "users_without_profile": 0,
+      "users_without_profile_status": "OK",
+      "lessons_without_module": 8,
+      "lessons_without_module_status": "WARN",
+      "enrollment_integrity": "OK"
+    },
+    "course_integrity": {
+      "paid_courses_missing_price": 0,
+      "paid_courses_zero_price": 0,
+      "free_courses_with_price": 0,
+      "published": 7,
+      "unpublished": 6,
+      "status": "OK"
+    },
+    "enrollment_integrity": {
+      "active": 4,
+      "inactive": 0,
+      "duplicate_enrollments": 0,
+      "status": "OK"
+    },
+    "payment_integrity": {
+      "total": 0,
+      "pending": 0,
+      "paid": 0,
+      "failed": 0,
+      "paid_payments_without_active_enrollment": 0,
+      "status": "OK"
+    },
+    "role_distribution": {
+      "students": 16,
+      "teachers": 7,
+      "admins": 1
+    },
+    "database_tables": {
+      "checks": {
+        "courses_course": "PRESENT",
+        "courses_module": "PRESENT",
+        "courses_lesson": "PRESENT",
+        "courses_enrollment": "PRESENT",
+        "accounts_profile": "PRESENT",
+        "payments_payment": "PRESENT",
+        "auth_user": "PRESENT",
+        "auth_group": "PRESENT",
+        "django_session": "PRESENT"
+      },
+      "status": "OK"
+    }
+  },
+  "overall_status": "PASS"
+}
